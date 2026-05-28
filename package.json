@@ -5,13 +5,16 @@
   "main": "index.js",
   "scripts": {
     "test:e2e": "playwright test",
-    "test:ui": "playwright test --ui",
+    "test:ui": "rm -rf test-results playwright-report && playwright test --ui",
     "report": "playwright show-report"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
+  "engines": {
+    "node": ">=20 <26"
+  },
   "devDependencies": {
     "@playwright/test": "^1.60.0",
     "@types/node": "^25.9.1"

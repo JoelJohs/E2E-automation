@@ -15,12 +15,16 @@ export class ProductsPage extends BasePage {
   }
 
   async openProducts() {
-    await this.page.goto(BASE_URL + ROUTES.PRODUCTS, { waitUntil: 'domcontentloaded' });
+    await this.page.goto(BASE_URL + ROUTES.PRODUCTS, { waitUntil: "load" });
+    await this.searchInput.waitFor({ state: "visible" });
   }
 
   async searchProduct(productName: string) {
+    await this.searchInput.waitFor({ state: "visible" });
     await this.searchInput.fill(productName);
 
+    await this.searchButton.scrollIntoViewIfNeeded();
+    await this.searchButton.waitFor({ state: "visible" });
     await this.searchButton.click();
   }
 }
